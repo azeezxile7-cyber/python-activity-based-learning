@@ -1,34 +1,12 @@
-password = input("Enter your password: ")
 
-errors = []
+key = ["A", "B", "C", "D", "A"]
+score = 0
 
-if len(password) < 8:
-    errors.append("Minimum 8 characters required")
+for i in range(5):
+    answer = input("Enter answer: ")
 
-if not any(c.isupper() for c in password):
-    errors.append("At least one uppercase letter required")
+    if answer.upper() == key[i]:
+        score = score + 1
 
-if not any(c.islower() for c in password):
-    errors.append("At least one lowercase letter required")
-
-if not any(c.isdigit() for c in password):
-    errors.append("At least one digit required")
-
-if not any(not c.isalnum() for c in password):
-    errors.append("At least one special character required")
-
-if any(password[i] == password[i+1]
-       for i in range(len(password)-1)):
-    errors.append("Repeated consecutive characters not allowed")
-
-prohibited = ["password", "123456", "admin"]
-
-if any(word in password.lower() for word in prohibited):
-    errors.append("Contains prohibited substring")
-
-if errors:
-    print("\nInvalid Password")
-    for error in errors:
-        print("-", error)
-else:
-    print("\nValid Password")
+print("Total Correct Answers:", score)
+print("Total Marks:", score * 2)
