@@ -1,30 +1,23 @@
-rows = int(input("Enter number of rows: "))
-cols = int(input("Enter number of columns: "))
 
-reserved = int(input("Enter number of reserved seats: "))
+marks = []
 
-reserved_seats = set()
+n = int(input("Enter number of subjects: "))
 
-for i in range(reserved):
-    r, c = map(int, input("Enter reserved row and column: ").split())
+for i in range(n):
+    m = int(input("Enter marks: "))
+    marks.append(m)
 
-    if 1 <= r <= rows and 1 <= c <= cols:
-        reserved_seats.add((r, c))
-    else:
-        print("Invalid seat position")
+total = sum(marks)
+average = total / n
 
-print("\nExamination Seating Arrangement\n")
+print("Total Marks:", total)
+print("Average Marks:", average)
 
-for r in range(1, rows + 1):
-    for c in range(1, cols + 1):
-
-        if (r, c) in reserved_seats:
-            print("R", end=" ")
-
-        elif (r + c) % 2 == 0:
-            print("X", end=" ")
-
-        else:
-            print("S", end=" ")
-
-    print()
+if average >= 90:
+    print("Excellent")
+elif average >= 75:
+    print("Good")
+elif average >= 50:
+    print("Average")
+else:
+    print("Poor")
