@@ -1,35 +1,17 @@
-email = input("Enter student email: ")
-reg_id = input("Enter registration ID: ")
 
+text = input("Enter a string: ")
 
-email_valid = False
+result = ""
+count = 1
 
-if email.count("@") == 1:
-    username, domain = email.split("@")
+for i in range(1, len(text)):
+    if text[i] == text[i - 1]:
+        count = count + 1
+    else:
+        result = result + text[i - 1] + str(count)
+        count = 1
 
-    if (username and domain and
-        "." in domain and
-        not domain.startswith(".") and
-        not domain.endswith(".") and
-        all(c.isalnum() or c in "._-" for c in username) and
-        all(c.isalnum() or c in ".-" for c in domain)):
-        email_valid = True
+if len(text) > 0:
+    result = result + text[-1] + str(count)
 
-
-id_valid = (
-    reg_id.startswith("STU") and
-    len(reg_id) == 7 and
-    reg_id[3:].isdigit()
-)
-
-print("\nValidation Results:")
-
-if email_valid:
-    print("Email: Valid")
-else:
-    print("Email: Invalid")
-
-if id_valid:
-    print("Registration ID: Valid")
-else:
-    print("Registration ID: Invalid")
+print("Compressed String:", result)
