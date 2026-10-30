@@ -1,33 +1,10 @@
-key = input("Enter answer key: ").upper().split(",")
 
-answers = input("Enter student answers: ").upper().split(",")
+attendance = int(input("Enter attendance percentage: "))
+lab = input("Lab completed? (yes/no): ")
+marks = int(input("Enter internal marks: "))
+fees = input("Fees paid? (yes/no): ")
 
-if len(key) != len(answers):
-    print("Error: Number of answers must match answer key")
-
+if attendance >= 75 and lab == "yes" and marks >= 40 and fees == "yes":
+    print("Eligible for Examination")
 else:
-    correct = 0
-    incorrect = 0
-    unanswered = 0
-
-    positive_mark = 4
-    negative_mark = 1
-
-    for i in range(len(key)):
-
-        if answers[i] == "":
-            unanswered += 1
-
-        elif answers[i] == key[i]:
-            correct += 1
-
-        else:
-            incorrect += 1
-
-    score = (correct * positive_mark) - (incorrect * negative_mark)
-
-    print("\nExamination Results")
-    print("Correct Answers:", correct)
-    print("Incorrect Answers:", incorrect)
-    print("Unanswered Questions:", unanswered)
-    print("Final Score:", score)
+    print("Not Eligible for Examination")
